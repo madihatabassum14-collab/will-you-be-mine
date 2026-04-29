@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday My Yusuf ❤️</title>
+<title>For My Love ❤️</title>
 
 <style>
 body {
@@ -27,7 +27,7 @@ body {
   position: relative;
 }
 
-h1 {
+h1, h2 {
   color: #ff4d6d;
 }
 
@@ -54,7 +54,13 @@ button:hover {
   display: none;
 }
 
-/* Floating hearts */
+#typing {
+  min-height: 120px;
+  white-space: pre-line;
+  color: #333;
+}
+
+/* hearts */
 .heart {
   position: absolute;
   color: #ff4d6d;
@@ -71,75 +77,97 @@ button:hover {
 <body>
 
 <div class="container">
-
   <h1>Hey My Yusuf 💖</h1>
 
-  <p id="startText">
-    Click below... I have something special for you 🥺💌
-  </p>
+  <p id="startText">I have something special for you… click below 🥺</p>
 
   <button onclick="start()">Click Me ❤️</button>
 
   <div id="content" class="hidden">
+    <div id="typing"></div>
 
-    <h2>🎂 Happy Birthday My Shona 💖</h2>
-
-    <p>
-      My qalbi, my forever life, my Yusuf 🫶  
-      <br><br>
-      From your Jaana 💕  
-      <br><br>
-      Since 14 March 2026,  
-      you have become my happiest place...  
-      you are my sukoon 🥺❤️  
-    </p>
-
-    <p>
-      I wish you endless happiness, success, love,  
-      and a life full of beautiful moments 💫  
-      <br><br>
-      I promise to be with you...  
-      today, tomorrow, forever 💍
-    </p>
-
-    <h3>Will you be mine forever? 💖</h3>
+    <h2>Will you be mine forever? 💍</h2>
 
     <button onclick="yesClicked()">Yes 😍</button>
     <button id="noBtn" onmouseover="moveNo()">No 🙈</button>
-
   </div>
-
 </div>
 
-<!-- MUSIC -->
+<!-- music -->
 <audio id="music" loop>
   <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=romantic-background-112191.mp3" type="audio/mpeg">
 </audio>
 
 <script>
+const message = `My shona, my qalbi, my forever 🫶
+
+From the moment you came into my life,
+everything became more beautiful 💖
+
+You are my happiness,
+my peace, my sukoon 🥺❤️
+
+I want to be with you always…
+today, tomorrow, forever 💍`;
+
+let i = 0;
+
+function typeEffect() {
+  if (i < message.length) {
+    document.getElementById("typing").innerHTML += message.charAt(i);
+    i++;
+    setTimeout(typeEffect, 40);
+  }
+}
+
 function start() {
   document.getElementById("content").classList.remove("hidden");
   document.getElementById("startText").style.display = "none";
   document.querySelector("button").style.display = "none";
   document.getElementById("music").play();
+  typeEffect();
 }
 
 function yesClicked() {
   document.body.innerHTML = `
-    <h1 style="color:white;">Yayyy!!! 💖💍</h1>
-    <h2 style="color:white;">I love you forever my Yusuf 🥺❤️</h2>
+    <h1 style="color:white;">💖 I LOVE YOU 💖</h1>
+    <h2 style="color:white;">Forever and always 🥺💍</h2>
   `;
+
+  // confetti
+  for (let i = 0; i < 150; i++) {
+    let c = document.createElement("div");
+    c.style.position = "absolute";
+    c.style.width = "8px";
+    c.style.height = "8px";
+    c.style.backgroundColor = randomColor();
+    c.style.top = "-10px";
+    c.style.left = Math.random() * window.innerWidth + "px";
+    document.body.appendChild(c);
+
+    let fall = setInterval(() => {
+      c.style.top = parseFloat(c.style.top) + 5 + "px";
+    }, 20);
+
+    setTimeout(() => {
+      clearInterval(fall);
+      c.remove();
+    }, 3000);
+  }
+}
+
+function randomColor() {
+  const colors = ["#ff4d6d", "#ff9a9e", "#fad0c4", "#ffffff", "#ffcc00"];
+  return colors[Math.floor(Math.random() * colors.length)];
 }
 
 function moveNo() {
   let btn = document.getElementById("noBtn");
-  let x = Math.random() * 250;
-  let y = Math.random() * 250;
-  btn.style.left = x + "px";
-  btn.style.top = y + "px";
+  btn.style.left = Math.random() * 250 + "px";
+  btn.style.top = Math.random() * 250 + "px";
 }
 
-// Floating hearts
+// floating hearts
 setInterval(() => {
   let heart = document.createElement("div");
   heart.className = "heart";
@@ -148,9 +176,7 @@ setInterval(() => {
   heart.style.fontSize = (Math.random() * 20 + 10) + "px";
   document.body.appendChild(heart);
 
-  setTimeout(() => {
-    heart.remove();
-  }, 5000);
+  setTimeout(() => heart.remove(), 5000);
 }, 300);
 </script>
 
