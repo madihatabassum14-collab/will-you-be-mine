@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Love ❤️</title>
+<title>For My Ammi & Abbu ❤️</title>
 
 <style>
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -55,12 +55,12 @@ button:hover {
 }
 
 #typing {
-  min-height: 120px;
+  min-height: 140px;
   white-space: pre-line;
   color: #333;
 }
 
-/* hearts */
+/* floating hearts */
 .heart {
   position: absolute;
   color: #ff4d6d;
@@ -77,38 +77,52 @@ button:hover {
 <body>
 
 <div class="container">
-  <h1>Hey My Yusuf 💖</h1>
+  <h1>For My Ammi & Abbu ❤️</h1>
 
-  <p id="startText">I have something special for you… click below 🥺</p>
+  <p id="startText">I have something from my heart… 🥺</p>
 
   <button onclick="start()">Click Me ❤️</button>
 
   <div id="content" class="hidden">
     <div id="typing"></div>
 
-    <h2>Will you be mine forever? 💍</h2>
+    <h2>Will you always be my strength and my forever home? 🥺❤️</h2>
 
-    <button onclick="yesClicked()">Yes 😍</button>
-    <button id="noBtn" onmouseover="moveNo()">No 🙈</button>
+    <button onclick="yesClicked()">Always ❤️</button>
+    <button id="noBtn" onmouseover="moveNo()">Never 😅</button>
   </div>
 </div>
 
-<!-- music -->
+<!-- background music -->
 <audio id="music" loop>
   <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=romantic-background-112191.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-const message = `My shona, my qalbi, my forever 🫶
+const message = `My dearest Ammi & Abbu ❤️
 
-From the moment you came into my life,
-everything became more beautiful 💖
+You are my first love,
+my first home, and my forever strength 🫶
 
-You are my happiness,
-my peace, my sukoon 🥺❤️
+Every smile of mine begins because of you…
+every happiness I feel comes from your love 💖
 
-I want to be with you always…
-today, tomorrow, forever 💍`;
+Ammi, your care is my comfort 🥺
+Abbu, your support is my strength ❤️
+
+You both are my safe place,
+my peace, my sukoon 🌙
+
+I may not always say it,
+but today I want you to know…
+
+I love you more than words can ever explain 💕
+
+May Allah bless you with
+health, happiness, and long life 🤲✨
+
+I promise to always make you proud
+and always stay by your side 💖`;
 
 let i = 0;
 
@@ -124,14 +138,17 @@ function start() {
   document.getElementById("content").classList.remove("hidden");
   document.getElementById("startText").style.display = "none";
   document.querySelector("button").style.display = "none";
+
+  // play music
   document.getElementById("music").play();
+
   typeEffect();
 }
 
 function yesClicked() {
   document.body.innerHTML = `
-    <h1 style="color:white;">💖 I LOVE YOU 💖</h1>
-    <h2 style="color:white;">Forever and always 🥺💍</h2>
+    <h1 style="color:white;">❤️ I LOVE YOU AMMI & ABBU ❤️</h1>
+    <h2 style="color:white;">Forever grateful 🥺💖</h2>
   `;
 
   // confetti
@@ -157,7 +174,7 @@ function yesClicked() {
 }
 
 function randomColor() {
-  const colors = ["#ff4d6d", "#ff9a9e", "#fad0c4", "#ffffff", "#ffcc00"];
+  const colors = ["#ff4d6d", "#fbc2eb", "#a6c1ee", "#ffffff", "#ffcc00"];
   return colors[Math.floor(Math.random() * colors.length)];
 }
 
